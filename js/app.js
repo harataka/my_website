@@ -38,9 +38,10 @@ const App = {
         this.initSortable(homeTeamList, 'home-team');
         this.initSortable(awayTeamList, 'away-team');
 
-        // 保存ボタンとクリアボタンを表示
+        // ボタン表示
         UI.showSaveButton();
         document.getElementById('clear-button').style.display = 'inline-block';
+        document.getElementById('copy-button').style.display = 'inline-block';        
     },
     
     // ドラッグ＆ドロップ機能を初期化
@@ -112,3 +113,52 @@ window.clearBatters = function() {
         alert('打線データをクリアしました。');
     }
 };
+
+//打線保存
+function copyBattersToClipBoard() {
+
+    // console.log("dbg1")
+
+    // 打線情報をテキスト形式で取得
+    let clipboardText="" //空文字列で初期化
+    let tmptext;    
+
+    // 自チームの打線を取得
+
+    const homeTeamContainer = document.getElementById('home-team-container');
+    const homeBatters = homeTeamContainer.querySelectorAll('.batter-info');
+
+    console.log(homeTeamContainer)
+    console.log(homeBatters)
+
+    homeBatters.forEach((batter,index)=>{
+        // console.log(index)
+        // console.log(batter.textContent)
+        // 正規表現        
+        // \s - 空白文字（スペース、タブ、改行、全角スペースなど）を表す
+        // + - 直前のパターンが1回以上繰り返されることを意味する
+        // g - グローバルフラグ（文字列全体で全ての一致を検索）
+        // →連続する複数の空白文字を単一のスペースに置き換える
+
+        // 縦棒「|」を削除する
+        const batterText = batter.textContent.trim().replace(/\s+/g,' ').replace(/\|/g,'');
+        tmptext = `${index + 1}番: ${batterText}`
+
+        console.log(tmptext)
+
+        // 改行
+        clipboardText += tmptext+"\n";
+
+    });
+
+    // clipboardText="ABCDE" OKここが動いてない
+
+    // クリップボードにコピー   
+    navigator.clipboard.writeText(clipboardText)
+        .then(() => {
+            alert('打線データをクリップボードにコピーしました。');
+        }).catch(err => {
+            console.error('クリップボードへのコピーに失敗しました:', err);
+        });
+
+}
