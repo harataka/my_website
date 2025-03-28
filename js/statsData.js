@@ -44,7 +44,7 @@ const StatsData = {
     // ホームラン
     getRandomHr: function() {
         let mean = 12;      // 平均
-        let stdDevPos = 15; // 標準偏差(プラス方向)
+        let stdDevPos = 12.5; // 標準偏差(プラス方向)
         let stdDevNeg = 10; // 標準偏差(マイナス方向)
         let min = 0;        // 下限
         let max = 60;       // 上限
