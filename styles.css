@@ -1,3 +1,69 @@
+/* ゲームコンテナのスタイル */
+.game-container {
+    min-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダーとゲームコンテナのスタイル */
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* ヘッダー内の要素を両端に配置する */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2c5282;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* ヘッダー部分の、プレイヤー表記箇所 */
+.player-toggle {
+    /* クリック可能な要素であることを示すカーソルスタイル */
+    cursor: pointer;
+    background-color: #4a90e2;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* マウスオーバー時のスタイル */
+.player-toggle:hover {
+    background-color: #3a7bd5;
+}
+
+/* チームを横並びにするスタイル */
+.teams-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.team-column {
+    width: 30%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.team-column h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+/* 真ん中のゲーム情報カラム */
+.game-info-column {
+    width: 35%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
 /* ドラッグ関連のスタイル */
 .draggable {
     cursor: move;
@@ -20,28 +86,6 @@
 .sortable-chosen {
     background-color: #f0f0f0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/* チームを横並びにするスタイル */
-.teams-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.team-column {
-    width: 48%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.team-column h2 {
-    text-align: center;
-    margin-top: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
 /* 打者情報のスタイル */
@@ -82,27 +126,34 @@
 }
 
 .stat-item {
-    min-width: 100px; /*固定幅*/
+    min-width: 100px;
+    /*固定幅*/
 }
 
 .stat-item.avg {
-    min-width: 100px; /*固定幅*/
+    min-width: 100px;
+    /*固定幅*/
 }
 
 .stat-item.hr {
-    min-width: 100px; /*固定幅*/
-}
-.stat-item.rbi {
-    min-width: 80px; /*固定幅*/
+    min-width: 100px;
+    /*固定幅*/
 }
 
-.avg, .hr, .rbi {
+.stat-item.rbi {
+    min-width: 80px;
+    /*固定幅*/
+}
+
+.avg,
+.hr,
+.rbi {
     margin-left: 5px;
 }
 
 /* 成績強調 */
-.highlight{
-    font-weight:bold;
+.highlight {
+    font-weight: bold;
     color: #1a73e8;
 }
 
@@ -110,15 +161,197 @@
     font-weight: bold;
     color: #d50000;
     /* background-color:#fff8e1; */
-    padding:2px 5px;
-    border-radius:3px;
-    box-shadow:0 1px 3px rgba(0,0,0,0.12);
-    animation:pulse 1.5s infinite;
-
+    padding: 2px 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
-    100%{transform:scale(1);}        
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* スコア表示＋スコアボード */
+.score-display {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#current-score {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2c5282;
+}
+
+#scoreboard {
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+#scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+#scoreboard th,
+#scoreboard td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#scoreboard th {
+    background-color: #f2f2f2;
+}
+
+#scoreboard .home-score {
+    background-color: #e8f4f8;
+}
+
+#scoreboard .away-score {
+    background-color: #fff8e1;
+}
+
+/* 4. ランナー状況と塁のスタイル */
+.runner-situation {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.diamond {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    /* 要素を 時計回りに-45度回転 */
+    transform: rotate(-45deg);
+}
+
+.base {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 2px solid #333;
+}
+
+.first-base {
+    bottom: 0;
+    right: 0;
+}
+
+.second-base {
+    top: 0;
+    right: 0;
+}
+
+.third-base {
+    top: 0;
+    left: 0;
+}
+
+.home-plate {
+    bottom: 0;
+    left: 0;
+    /* border-radius: 50%; */
+
+    transform: rotate(45deg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
+    background-color: black;
+}
+
+/* ホームベースにかぶせる用の白図形 */
+.home-plate2 {
+    bottom: 2px;
+    left: 2px;
+    transform: rotate(45deg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
+
+    width: 19px;
+    height: 19px;
+
+    background-color: white;
+}
+
+
+.base.occupied {
+    background-color: #d50000;
+}
+
+/* ゲーム実況のスタイル */
+.game-commentary {
+    margin-top: 20px;
+}
+
+.commentary-box {
+    min-height: 150px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    /* コメントボックスが内容によって縦にスクロール可能になります */
+    overflow-y: auto;
+    max-height: 300px;
+    /* 読みやすさのために行間を適度に設定 */
+    line-height: 1.5;
+}
+
+/* ボタン要素のスタイル */
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    /* 背景色（background-color）が変化する際に、0.3秒かけてスムーズに変化させる指定です。 */
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    /* 操作禁止カーソルに変化 */
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #3a7bd5;
+}
+
+#save-button {
+    background-color: #28a745;
+}
+
+#save-button:hover {
+    background-color: #218838;
+}
+
+#clear-button {
+    background-color: #dc3545;
+}
+
+#clear-button:hover {
+    background-color: #c82333;
+}
+
+#copy-button {
+    background-color: #6c757d;
+}
+
+#copy-button:hover {
+    background-color: #5a6268;
 }
