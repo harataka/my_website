@@ -64,6 +64,10 @@
     background-color: #f9f9f9;
 }
 
+ol#home-team-list {
+    padding-left: 10px;
+}
+
 /* ドラッグ関連のスタイル */
 .draggable {
     cursor: move;
@@ -99,6 +103,7 @@
 .batter-name {
     font-weight: bold;
     min-width: 130px;
+    border: 1px solid #000;
 }
 
 .position {
@@ -131,13 +136,14 @@
 }
 
 .stat-item.avg {
-    min-width: 100px;
+    min-width: 40px;
     /*固定幅*/
 }
 
 .stat-item.hr {
-    min-width: 100px;
     /*固定幅*/
+    min-width: 40px;
+    text-align: right;
 }
 
 .stat-item.rbi {
@@ -148,7 +154,8 @@
 .avg,
 .hr,
 .rbi {
-    margin-left: 5px;
+    margin-left:45px;
+    text-align: right;
 }
 
 /* 成績強調 */
@@ -231,6 +238,7 @@
 }
 
 .diamond {
+    border: 1px solid gray;
     position: relative;
     width: 120px;
     height: 120px;

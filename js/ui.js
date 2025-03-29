@@ -47,9 +47,9 @@ const UI = {
                 <div class="batter-info">
                     <span class="batter-name">${batter.lastname} ${batter.firstname}</span>
                     <span class="position">${batter.position}</span>
-                    <span class="stat-item avg ${avgClass}">打率: ${batter.avg}</span>
-                    <span class="stat-item hr ${hrClass}">本塁打: ${batter.hr}</span>
-                    <span class="stat-item rbi ${rbiClass}">打点: ${batter.rbi}</span>
+                    <span class="stat-item avg ${avgClass}"> ${batter.avg}</span>
+                    <span class="stat-item hr ${hrClass}"> ${batter.hr}</span>本
+                    <span class="stat-item rbi ${rbiClass}"> ${batter.rbi}</span>点
                 </div>
             `;
             
