@@ -64,7 +64,7 @@
     background-color: #f9f9f9;
 }
 
-ol#home-team-list {
+ol#home-team-list ,ol#away-team-list{
     padding-left: 10px;
 }
 
@@ -103,7 +103,7 @@ ol#home-team-list {
 .batter-name {
     font-weight: bold;
     min-width: 130px;
-    border: 1px solid #000;
+    
 }
 
 .position {
@@ -147,14 +147,14 @@ ol#home-team-list {
 }
 
 .stat-item.rbi {
-    min-width: 80px;
+    min-width: 40px;
     /*固定幅*/
 }
 
 .avg,
 .hr,
 .rbi {
-    margin-left:45px;
+    margin-left:17px;
     text-align: right;
 }
 
