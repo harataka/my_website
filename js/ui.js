@@ -11,16 +11,45 @@ const UI = {
         BattersData.homeTeamBatters.forEach(batter => {
             const batterItem = document.createElement("li");
             batterItem.className = 'draggable';
+
+            // 打率の強調表示
+            const avgValue = parseFloat(batter.avg);
+            let avgClass="";
+
+            if(avgValue>=0.300){
+                avgClass = "super-highlight";
+            }else if(avgValue>=0.275){
+                avgClass = "highlight";
+            }
+
+            // HRの強調表示
+            const hrValue = parseFloat(batter.hr);
+            let hrClass="";
+
+            if(hrValue>=35){
+                hrClass = "super-highlight";
+            }else if(hrValue>=25){
+                hrClass = "highlight";
+            }
+
+            // 打点の強調表示
+            const rbiValue = parseFloat(batter.rbi);
+            let rbiClass="";
+
+            if(rbiValue>=100){
+                rbiClass = "super-highlight";
+            }else if(rbiValue>=80){
+                rbiClass = "highlight";
+            }
+
             
             batterItem.innerHTML = `
                 <div class="batter-info">
-                    <div class="batter-name">${batter.lastname} ${batter.firstname}</div>
-                    <div class="batter-stats">
-                        <span class="position">${batter.position}</span> | 
-                        <span class="avg">打率: ${batter.avg}</span> | 
-                        <span class="hr">本塁打: ${batter.hr}</span> | 
-                        <span class="rbi">打点: ${batter.rbi}</span>
-                    </div>
+                    <span class="batter-name">${batter.lastname} ${batter.firstname}</span>
+                    <span class="position">${batter.position}</span>
+                    <span class="stat-item avg ${avgClass}">打率: ${batter.avg}</span>
+                    <span class="stat-item hr ${hrClass}">本塁打: ${batter.hr}</span>
+                    <span class="stat-item rbi ${rbiClass}">打点: ${batter.rbi}</span>
                 </div>
             `;
             
